@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container mt-5 text-center">
+
+  <h2 class="mb-4">Upload dan Tampilkan Foto</h2>
+  <center>
+    <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+      <div class="d-flex mb-3 justify-content-center" style="width: 100%;">
+        <input class="form-control" name="gambar" type="file" id="fileInput" style="width: 500px;" required>
+        <button type="submit" class="btn btn-primary" style="margin-left: 5px;">Upload</button>
+      </div>
+    </form>
+  </center>
+</div>
+
+{% endblock %}

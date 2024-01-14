@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} {% block content %}
+
+<div class="container" style="text-align: center;">
+
+  <h2 class="mt-4 mb-4">Hasil:</h2>
+  <div id="imageContainer" class="mt-4 mx-auto">
+    <img id="imagePreview" src="../static/img_result/{{ result }}" alt="Uploaded Image"
+      style="max-width: 100%; max-height: 400px;">
+  </div>
+</div>
+
+<div class="container mt-2" style="text-align: center;">
+  <a class="btn btn-success" href="../static/img_result/{{ result }}" download>Save Image</a>
+</div>
+{% endblock %}

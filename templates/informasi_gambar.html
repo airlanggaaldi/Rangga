@@ -1,0 +1,71 @@
+{% extends 'layout.html' %} {% block content %}
+
+<div class="container mt-5 text-center">
+
+    <h2 class="mb-4">Informasi Gambar</h2>
+
+    <!-- Baris teks nama -->
+    <h4 id="imageName" class="mb-3"></h4>
+
+    <!-- Kolom informasi -->
+    <div id="imageInfo" class="mt-4 mx-auto row">
+        <div class="col-md-4">
+            <p id="imageSize">Ukuran File: <b> {{ size }} mb </b></p>
+        </div>
+        <div class="col-md-4">
+            <p id="imageResolution">Resolusi: <b> {{ width }} x {{ height }} </b></p>
+        </div>
+        <div class="col-md-4">
+            <p id="imageBitsPerPixel">Bit per Pixel: <b> {{ bits }} </b></p>
+        </div>
+    </div>
+
+    <!-- Tempat gambar akan ditampilkan -->
+    <div id="imageContainer" class="mt-4 mx-auto mb-4 row">
+        <div class="col align-right" style="text-align: right;">
+            <img id="imagePreview" src="/static/img_upload/{{ gambar }}" alt="Uploaded Image" style="background-color: rgb(240, 240, 240); max-width: 500px; max-height: 350px; box-shadow: 2px 2px 2px rgba(0,0,0,0.8); padding: 10px; border: 1px dashed grey;
+            ">
+        </div>
+        <div class="form-check col" style="text-align: left;">
+            <div style=" font-weight: bold;">
+                Pilih warna yang ingin diubah:
+            </div>
+            <form action="/change" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="filename" value="{{ gambar }}">
+                <table>
+
+                    {% for hex_colors in hex_color %}
+                    <tr class="row">
+                        <td class="col">
+                            <input type="radio" name="color" value="{{ hex_colors }}">
+                            <input type="color" name="" id="" value="{{ hex_colors }}" disabled>
+                            {{ hex_colors }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                <div style=" font-weight: bold;">
+                    Pilih diubah ke warna apa:
+                </div>
+                <input type="color" name="new_color">
+                <br>
+                <input type="submit" class="btn btn-success" value="Change">
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div>
+            <!-- <a class="btn btn-dark" href="/negative/{{ gambar }}">Negative</a> -->
+        </div>
+    </div>
+
+</div>
+
+<!-- Tambahkan script Bootstrap dan script untuk Bootstrap (popper.js) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+{% endblock %}
